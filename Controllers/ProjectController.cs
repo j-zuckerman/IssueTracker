@@ -65,7 +65,7 @@ namespace issueTracker.Controllers
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new {Id= issue.Id}, project);
+            return CreatedAtAction("GetProject", new {Id= project.Id}, project);
         }
     }
 }

@@ -1,0 +1,4 @@
+.issueContainer {
+  display: flex;
+  flex-direction: row;
+}
