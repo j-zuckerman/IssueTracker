@@ -22,24 +22,18 @@ namespace issueTracker.Controllers
             _context = context;
         }
 
-        // GET: api/Issue
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Issue>>> GetIssues()
-        {
-            return await _context.Issues.ToListAsync();
-        }
 
          // GET: api/Issue/:id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Issue>> GetIssue(Guid Id)
+        public async Task<ActionResult<IEnumerable<Issue>>> GetIssues(Guid Id)
         {
-           var issue = await _context.Issues.FindAsync(Id);
+           var issues = await _context.Issues.Where(x => x.ProjectId == Id).ToListAsync();
 
-           if(issue == null){
+           if(issues == null){
             return NotFound();
            }
 
-            return issue;
+            return issues;
         }
 
         // //PUT: api/Issue/:id
@@ -75,7 +69,8 @@ namespace issueTracker.Controllers
 
         //POST: api/Issue
         [HttpPost]
-        public async Task<ActionResult<Issue>> PostIssue(Issue issue){
+        public async Task<ActionResult<Issue>> PostIssue(Issue issue, Guid Id){
+            issue.ProjectId = Id;
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 

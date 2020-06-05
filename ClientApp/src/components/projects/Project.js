@@ -7,7 +7,7 @@ export const Project = ({ data }) => {
     <div>
       <Card style={{ width: '18rem' }} className="mt-3 mr-3 mb-3">
         <Card.Body>
-          <Card.Title>{data.title}</Card.Title>
+          <Card.Title>{data.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             Card Subtitle
           </Card.Subtitle>

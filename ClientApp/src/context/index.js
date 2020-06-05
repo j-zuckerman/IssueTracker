@@ -25,8 +25,8 @@ const ProjectProvider = ({ children }) => {
     setProjects((projects) => [...projects, data]);
   }
 
-  async function fetchIssues(issueId) {
-    const response = await fetch(`api/issue/${issueId}`);
+  async function fetchIssues(projectId) {
+    const response = await fetch(`api/issue/${projectId}`);
     const data = await response.json();
     setIssues(data);
   }

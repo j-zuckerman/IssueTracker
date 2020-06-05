@@ -7,25 +7,25 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './projects.css';
 
-const projects = [
-  {
-    title: 'project1',
-    description: 'blah blah',
-    id: 1,
-  },
-  {
-    title: 'project2',
-    description: 'blah blah',
-    id: 2,
-  },
-  {
-    title: 'project3',
-    description: 'blah blah',
-    id: 3,
-  },
-];
+// const projects = [
+//   {
+//     title: 'project1',
+//     description: 'blah blah',
+//     id: 1,
+//   },
+//   {
+//     title: 'project2',
+//     description: 'blah blah',
+//     id: 2,
+//   },
+//   {
+//     title: 'project3',
+//     description: 'blah blah',
+//     id: 3,
+//   },
+// ];
 export const Projects = () => {
-  const { addProject } = useContext(ProjectContext);
+  const { addProject, projects } = useContext(ProjectContext);
 
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
