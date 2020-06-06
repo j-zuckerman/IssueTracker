@@ -4,12 +4,19 @@ export const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState([]);
   const [issues, setIssues] = useState([]);
 
   async function fetchProjects() {
     const response = await fetch('api/project');
     const data = await response.json();
     setProjects(data);
+  }
+
+  async function fetchProject(projectId) {
+    const response = await fetch(`api/project/${projectId}`);
+    const data = await response.json();
+    setProject(data);
   }
 
   async function addProject(dataToSend) {
@@ -31,7 +38,18 @@ const ProjectProvider = ({ children }) => {
     setIssues(data);
   }
 
-  async function addIssue() {}
+  async function addIssue(dataToSend) {
+    const response = await fetch(`api/issue`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    });
+    const data = await response.json();
+
+    setIssues((issues) => [...issues, data]);
+  }
   async function deleteIssue(issueId) {
     setIssues();
   }
@@ -48,9 +66,12 @@ const ProjectProvider = ({ children }) => {
     <ProjectContext.Provider
       value={{
         projects,
+        project,
+        fetchProject,
         addProject,
         issues,
         fetchIssues,
+        addIssue,
         deleteIssue,
         editIssue,
       }}

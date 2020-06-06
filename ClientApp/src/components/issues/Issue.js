@@ -14,14 +14,11 @@ export const Issue = ({ data }) => {
     <div>
       <Card style={{ width: '18rem' }} className="mt-4 mb-4 mr-4">
         <Card.Body>
-          <Card.Title>{data.title}</Card.Title>
+          <Card.Title>{data.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             Card Subtitle
           </Card.Subtitle>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </Card.Text>
+          <Card.Text>{data.description}</Card.Text>
           <Button onClick={handleShow}>Edit Issue</Button>
         </Card.Body>
       </Card>

@@ -22,6 +22,12 @@ namespace issueTracker.Controllers
             _context = context;
         }
 
+        // GET: api/Issue/:id
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Issue>>> GetAllIssues()
+        {
+          return await _context.Issues.ToListAsync();
+        }
 
          // GET: api/Issue/:id
         [HttpGet("{id}")]
@@ -69,8 +75,8 @@ namespace issueTracker.Controllers
 
         //POST: api/Issue
         [HttpPost]
-        public async Task<ActionResult<Issue>> PostIssue(Issue issue, Guid Id){
-            issue.ProjectId = Id;
+        public async Task<ActionResult<Issue>> PostIssue(Issue issue){
+         
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
