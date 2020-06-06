@@ -32,6 +32,15 @@ const ProjectProvider = ({ children }) => {
     setProjects((projects) => [...projects, data]);
   }
 
+  async function deleteProject(projectId) {
+    const response = await fetch(`api/project/${projectId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    console.log(data);
+    setProjects(projects.filter((project) => project.id != projectId));
+  }
+
   async function fetchIssues(projectId) {
     const response = await fetch(`api/issue/${projectId}`);
     const data = await response.json();
@@ -75,6 +84,7 @@ const ProjectProvider = ({ children }) => {
         project,
         fetchProject,
         addProject,
+        deleteProject,
         issues,
         fetchIssues,
         addIssue,

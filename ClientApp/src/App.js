@@ -12,11 +12,8 @@ import './custom.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Projects } from './components/projects';
-
 import { ProjectDetails } from './components/projects/ProjectDetails';
 
-import { Issues } from './components/issues/index';
-import { Issue } from './components/issues/Issue';
 import ProjectProvider from './context';
 
 export default class App extends Component {
@@ -30,9 +27,6 @@ export default class App extends Component {
 
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/project/detail/:id" component={ProjectDetails} />
-
-          <Route exact path="/issues" component={Issues} />
-          <Route exact path="/issue/detail/:id" component={Issue} />
 
           <Route
             path={ApplicationPaths.ApiAuthorizationPrefix}
