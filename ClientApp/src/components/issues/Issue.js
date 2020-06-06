@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { ProjectContext } from '../../context';
 
 export const Issue = ({ data }) => {
+  const { deleteIssue } = useContext(ProjectContext);
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleDelete = (id) => {
+    deleteIssue(id);
+  };
 
   return (
     <div>
@@ -16,10 +23,15 @@ export const Issue = ({ data }) => {
         <Card.Body>
           <Card.Title>{data.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
+            {data.description}
           </Card.Subtitle>
-          <Card.Text>{data.description}</Card.Text>
-          <Button onClick={handleShow}>Edit Issue</Button>
+          <Card.Text></Card.Text>
+          <Button className="mr-3" onClick={handleShow}>
+            Edit
+          </Button>
+          <Button variant="danger" onClick={() => handleDelete(data.id)}>
+            Delete
+          </Button>
         </Card.Body>
       </Card>
       <Modal show={show} onHide={handleClose}>

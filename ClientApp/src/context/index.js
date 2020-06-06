@@ -50,8 +50,14 @@ const ProjectProvider = ({ children }) => {
 
     setIssues((issues) => [...issues, data]);
   }
+
   async function deleteIssue(issueId) {
-    setIssues();
+    const response = await fetch(`api/issue/${issueId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    console.log(data);
+    setIssues(issues.filter((issue) => issue.id != issueId));
   }
 
   async function editIssue(issueId) {
