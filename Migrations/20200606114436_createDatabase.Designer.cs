@@ -9,7 +9,7 @@ using issueTracker.Data;
 namespace issueTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200605231651_createDatabase")]
+    [Migration("20200606114436_createDatabase")]
     partial class createDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -54,7 +54,8 @@ export const Projects = () => {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <h2>Projects</h2>
+      <Button variant="primary" className="addButton" onClick={handleShow}>
         Add Project
       </Button>
       <div className="projectsGroup">

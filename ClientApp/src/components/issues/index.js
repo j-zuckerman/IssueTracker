@@ -7,25 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './issues.css';
+import { Progress } from './ProgressBar';
 
-// const issues = [
-//   {
-//     title: 'issue1',
-//     status: 'open',
-//   },
-//   {
-//     title: 'issue4',
-//     status: 'open',
-//   },
-//   {
-//     title: 'issue2',
-//     status: 'inProgress',
-//   },
-//   {
-//     title: 'issue3',
-//     status: 'finished',
-//   },
-// ];
 export const Issues = ({ projectId }) => {
   const { addIssue, issues, fetchIssues } = useContext(ProjectContext);
   const [show, setShow] = useState(false);
@@ -67,10 +50,15 @@ export const Issues = ({ projectId }) => {
 
   return (
     <>
-      <Button onClick={handleShow}>Add Issue</Button>
+      <Progress data={issues}></Progress>
+      <Button className="addButton" onClick={handleShow}>
+        Add Issue
+      </Button>
       <div className="issueContainer">
-        <div className="issueGroup">
-          <h3>Open </h3>
+        <div className="issueGroup mt-3 mr-3 mb-3">
+          <div className="statusLabel">
+            <h3 className="statusText">Open</h3>
+          </div>
 
           {issues
             .filter((issue) => issue.status === 'open')
@@ -79,8 +67,10 @@ export const Issues = ({ projectId }) => {
             ))}
         </div>
 
-        <div className="issueGroup">
-          <h3>In Progress </h3>
+        <div className="issueGroup mt-3 mr-3 mb-3">
+          <div className="statusLabel">
+            <h3 className="statusText">In Progress </h3>
+          </div>
 
           {issues
             .filter((issue) => issue.status === 'inProgress')
@@ -89,11 +79,13 @@ export const Issues = ({ projectId }) => {
             ))}
         </div>
 
-        <div className="issueGroup">
-          <h3>Finished </h3>
+        <div className="issueGroup mt-3 mr-3 mb-3">
+          <div className="statusLabel">
+            <h3 className="statusText">Closed </h3>
+          </div>
 
           {issues
-            .filter((issue) => issue.status === 'finished')
+            .filter((issue) => issue.status === 'closed')
             .map((issue) => (
               <Issue data={issue}></Issue>
             ))}

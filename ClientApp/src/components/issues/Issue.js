@@ -12,7 +12,7 @@ export const Issue = ({ data }) => {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }} className="mt-4 mb-4 mr-4">
+      <Card style={{ width: '100%' }} className="mt-4 mb-4 mr-4">
         <Card.Body>
           <Card.Title>{data.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">

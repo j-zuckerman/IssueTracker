@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
-import Card from 'react-bootstrap/Card';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import { Link } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
+
 import { Issues } from '../issues';
 import { ProjectContext } from '../../context';
 
@@ -16,12 +16,8 @@ export const ProjectDetails = (props) => {
   return (
     <div>
       <h1>{project.name}</h1>
-      <ProgressBar>
-        <ProgressBar striped variant="success" now={35} key={1} />
-        <ProgressBar variant="warning" now={20} key={2} />
-        <ProgressBar striped variant="danger" now={10} key={3} />
-      </ProgressBar>
-      <Link to={`/project/edit/${id}`}>Edit Project</Link>
+      <p>{project.description}</p>
+
       <Issues projectId={props.match.params.id}></Issues>
     </div>
   );
